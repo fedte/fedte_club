@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 Nodeclub
 =
 
@@ -58,3 +59,6 @@ $ make test-cov
 ## License
 
 MIT
+=======
+# fedte_club
+>>>>>>> 57ac2cf0eabe5aca61640a47545eb372924e8a18
