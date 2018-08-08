@@ -1,6 +1,18 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
+  <script type="text/javascript">
+    (function() {
+      /* if ( window.location.protocol.indexOf('s') < 0 ) {
+        window.location.protocol = 'https'
+      }
+     var host= window.location.hostname;
+      var d = 'fedte.org';
+      if(host !== d){
+        window.location.hostname = d
+      }*/
+    })()
+  </script>
   <!-- meta -->
   <meta charset="utf-8"/>
   <meta name='description' content='<%= config.description %>'>
@@ -61,6 +73,7 @@
   <% } %>
   <meta content="_csrf" name="csrf-param">
   <meta content="<%= csrf %>" name="csrf-token">
+
 </head>
 <body>
 <!-- navbar -->
@@ -90,7 +103,7 @@
             </a>
         </li>
         <% } %>
-        <li><a href='/getstart'>新手入门</a></li>
+        <li><a href='/getstart'>Node入门</a></li>
         <li><a href='/api'>API</a></li>
         <%
         var site_navs = config.site_navs || [];
@@ -127,6 +140,8 @@
       <a class='dark' href='/rss'>RSS</a>
       |
       <a class='dark' href='https://github.com/cnodejs/nodeclub/'>源码地址</a>
+      |
+      <a class='dark' href='http://bbs.fedte.cc/'>旧社区</a>
     </div>
 
     <%- partial('./_sponsors') %>

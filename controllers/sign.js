@@ -165,8 +165,14 @@ exports.login = function (req, res, next) {
 
 // sign out
 exports.signout = function (req, res, next) {
+  var cookie = {
+    domain:'.fedte.org',
+    path: '/',
+    maxAge: 0
+  }
   req.session.destroy();
-  res.clearCookie(config.auth_cookie_name, { path: '/' });
+  //delete req.session.user
+  res.clearCookie(config.auth_cookie_name, cookie);
   res.redirect('/');
 };
 

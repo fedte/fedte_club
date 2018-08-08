@@ -70,7 +70,7 @@ var config = {
       user: 'club@126.com',
       pass: 'club'
     },
-    ignoreTLS: true,
+    ignoreTLS: true
   },
 
   //weibo app key
