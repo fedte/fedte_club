@@ -32,7 +32,7 @@ router.get('/', site.index);
 // sitemap
 router.get('/sitemap.xml', site.sitemap);
 // mobile app download
-router.get('/app/download', site.appDownload);
+//router.get('/app/download', site.appDownload);
 
 // sign controller
 if (config.allow_sign_up) {
@@ -102,7 +102,9 @@ router.post('/upload', auth.userRequired, topic.upload); //上传图片
 // static
 router.get('/about', staticController.about);
 router.get('/faq', staticController.faq);
-router.get('/getstart', staticController.getstart);
+router.get('/getnodestart', staticController.getNodeStart);
+router.get('/getfrontstart', staticController.getFrontStart);
+
 router.get('/robots.txt', staticController.robots);
 router.get('/api', staticController.api);
 

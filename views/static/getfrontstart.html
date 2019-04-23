@@ -1,0 +1,26 @@
+<%- partial('../sidebar') %>
+
+<div id='content'>
+  <div class='panel'>
+    <div class='header'>
+      <ul class='breadcrumb'>
+        <li><a href='/'>主页</a><span class='divider'>/</span></li>
+        <li class='active'>web前端资料</li>
+      </ul>
+    </div>
+    <div class='inner topic'>
+      <div class="topic_content">
+        <%- markdown(multiline(function () {
+/*
+
+## WEB 前端资料
+
+** 正在整理当中，如果你有好的资料，请在社区 [@falost](https://fedte.org/user/falost) 进行添加
+
+
+*/
+        })) %>
+      </div>
+    </div>
+  </div>
+</div>

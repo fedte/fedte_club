@@ -42,4 +42,7 @@ router.get('/message/count', middleware.auth, messageController.count);
 router.post('/message/mark_all', middleware.auth, messageController.markAll);
 router.post('/message/mark_one/:msg_id', middleware.auth, messageController.markOne);
 
+// tools
+router.get('/tools/getImage', toolsController.getImageBase64);
+
 module.exports = router;

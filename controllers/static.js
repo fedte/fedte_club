@@ -11,13 +11,18 @@ exports.about = function (req, res, next) {
 exports.faq = function (req, res, next) {
   res.render('static/faq');
 };
-
-exports.getstart = function (req, res) {
-  res.render('static/getstart', {
+//获取node入门资料
+exports.getNodeStart = function (req, res) {
+  res.render('static/getnodestart', {
     pageTitle: 'Node.js 新手入门'
   });
 };
-
+//获取WEB前端资料
+exports.getFrontStart = function (req, res) {
+  res.render('static/getfrontstart', {
+    pageTitle: 'web前端资料'
+  });
+};
 
 exports.robots = function (req, res, next) {
   res.type('text/plain');

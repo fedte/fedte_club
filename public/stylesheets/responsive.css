@@ -19,12 +19,14 @@
   .navbar .brand {
       float: none;
       margin: 0 auto;
+      height:auto;
   }
 
   .navbar .navbar-search {
       clear: both;
       margin: 0 auto;
       float: none;
+       height:auto;
   }
 
   .navbar .search-query {
@@ -36,11 +38,11 @@
 @media (max-width: 979px) {
 
   .navbar {
-      margin: 0 5px;
-      z-index: 999;
-      width: auto !important;
+      position: relative;
   }
-
+  #main{
+      margin-top: 15px;
+  }
   .navbar .container, #main,
   #content, #footer_main {
       width: 100%;
@@ -65,7 +67,21 @@
   #content .panel {
       margin: 0 5px;
   }
-
+  #content .create {
+      display: block;
+  }
+  #content .create .inner{
+      border-radius: 3px;
+      margin-bottom: 10px;
+  }
+  #content .create .right{
+      float: right
+  }
+  .create .user_avatar img{
+    margin-left: 5px;
+    border-radius: 50%;
+    overflow: hidden;
+  }
   #sidebar {
       float: none;
       position: absolute;
@@ -82,6 +98,7 @@
       transition: .3s right;
       display: none;
   }
+
 
   #content .topic_title {
       font-size: 1em;

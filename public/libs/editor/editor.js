@@ -6911,7 +6911,45 @@ function toggleItalic(editor) {
   cm.focus();
 }
 
+/**
+ * Action for toggling code block.
+ */
 
+function toggleCodeBlock(editor) {
+  _toggleBlock(editor, 'code', '```\r\n', '\r\n```');
+}
+function _toggleBlock(editor, type, start_chars, end_chars){
+  end_chars = (typeof end_chars === 'undefined') ? start_chars : end_chars;
+  var cm = editor.codemirror;
+  var stat = getState(cm);
+
+  var text;
+  var start = start_chars;
+  var end = end_chars;
+
+  var startPoint = cm.getCursor('start');
+  var endPoint = cm.getCursor('end');
+  if (stat[type]) {
+    text = cm.getLine(startPoint.line);
+    start = text.slice(0, startPoint.ch);
+    end = text.slice(startPoint.ch);
+    startRegex = new RegExp("/^(.*)?(\*|\_){" + start_chars.length + "}(\S+.*)?$/", "g")
+    start = start.replace(startRegex, '$1$3');
+    endRegex = new RegExp("/^(.*\S+)?(\*|\_){" + end_chars.length + "}(\s+.*)?$/", "g")
+    end = end.replace(endRegex, '$1$3');
+    startPoint.ch -= start_chars.length;
+    endPoint.ch -= end_chars.length;
+    cm.setLine(startPoint.line, start + end);
+  } else {
+    text = cm.getSelection();
+    cm.replaceSelection(start + text + end);
+
+    startPoint.ch += start_chars.length;
+    endPoint.ch += end_chars.length;
+  }
+  cm.setSelection(startPoint, endPoint);
+  cm.focus();
+}
 /**
  * Action for toggling blockquote.
  */
@@ -7078,6 +7116,7 @@ function wordCount(data) {
 var toolbar = [
   {name: 'bold', action: toggleBold},
   {name: 'italic', action: toggleItalic},
+  {name: 'code', action: toggleCodeBlock},
   '|',
 
   {name: 'quote', action: toggleBlockquote},
@@ -7289,6 +7328,7 @@ Editor.prototype.createStatusbar = function(status) {
  */
 Editor.toggleBold = toggleBold;
 Editor.toggleItalic = toggleItalic;
+Editor.toggleCodeBlock= toggleCodeBlock;
 Editor.toggleBlockquote = toggleBlockquote;
 Editor.toggleUnOrderedList = toggleUnOrderedList;
 Editor.toggleOrderedList = toggleOrderedList;
@@ -7306,6 +7346,9 @@ Editor.prototype.toggleBold = function() {
 };
 Editor.prototype.toggleItalic = function() {
   toggleItalic(this);
+};
+Editor.prototype.toggleCodeBlock = function() {
+  toggleCodeBlock(this);
 };
 Editor.prototype.toggleBlockquote = function() {
   toggleBlockquote(this);

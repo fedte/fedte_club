@@ -17,7 +17,6 @@ var cache        = require('../common/cache');
 var xmlbuilder   = require('xmlbuilder');
 var renderHelper = require('../common/render_helper');
 var _            = require('lodash');
-var moment = require('moment');
 
 exports.index = function (req, res, next) {
   var page = parseInt(req.query.page, 10) || 1;
@@ -30,16 +29,13 @@ exports.index = function (req, res, next) {
   // 取主题
   var query = {};
   if (!tab || tab === 'all') {
-    query.tab = {$nin: ['job', 'dev']}
+    query.tab = {$ne: 'job'}
   } else {
     if (tab === 'good') {
       query.good = true;
     } else {
       query.tab = tab;
     }
-  }
-  if (!query.good) {
-    query.create_at = {$gte: moment().subtract(1, 'years').toDate()}
   }
 
   var limit = config.list_topic_count;
@@ -72,7 +68,7 @@ exports.index = function (req, res, next) {
       proxy.emit('no_reply_topics', no_reply_topics);
     } else {
       Topic.getTopicsByQuery(
-        { reply_count: 0, tab: {$nin: ['job', 'dev']}},
+        { reply_count: 0, tab: {$ne: 'job'}},
         { limit: 5, sort: '-create_at'},
         proxy.done('no_reply_topics', function (no_reply_topics) {
           cache.set('no_reply_topics', no_reply_topics, 60 * 1);
@@ -136,7 +132,7 @@ exports.sitemap = function (req, res, next) {
           return next(err);
         }
         topics.forEach(function (topic) {
-          urlset.ele('url').ele('loc', 'http://cnodejs.org/topic/' + topic._id);
+          urlset.ele('url').ele('loc', 'https://fedte.org/topic/' + topic._id);
         });
 
         var sitemapData = urlset.end();

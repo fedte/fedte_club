@@ -2,14 +2,15 @@ $(document).ready(function () {
   var windowHeight = $(window).height();
   var $backtotop = $('#backtotop');
   var top = windowHeight - $backtotop.height() - 200;
-
+  var $sidebarBottom =  $("#sidebarBottom");
+  var $sidebarUser = $('#sidebarUser');
 
   function moveBacktotop() {
     $backtotop.css({ top: top, right: 0});
   }
 
   function footerFixBottom() {
-      if($(document.body).height() < windowHeight){
+      if(($(document.body).height()+200) < windowHeight){
           $("#footer").addClass('fix-bottom');
       }else{
           $("#footer").removeClass('fix-bottom');
@@ -27,6 +28,17 @@ $(document).ready(function () {
     } else {
       $backtotop.fadeOut();
     }
+    if($sidebarBottom.offset().top - $(window).scrollTop() < 50 ){
+      $sidebarUser.css({
+        position: 'fixed',
+        width: '290px'
+      })
+    }else{
+      $sidebarUser.css({
+        position: 'static',
+        width: '290px'
+      })
+    } 
   });
 
   moveBacktotop();

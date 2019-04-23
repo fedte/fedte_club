@@ -62,8 +62,6 @@ var config = {
     max_rss_items: 50
   },
 
-  log_dir: path.join(__dirname, 'logs'),
-
   // 邮箱配置
   mail_opts: {
     host: 'smtp.126.com',
@@ -72,7 +70,7 @@ var config = {
       user: 'club@126.com',
       pass: 'club'
     },
-    ignoreTLS: true
+    ignoreTLS: true,
   },
 
   //weibo app key
@@ -95,7 +93,7 @@ var config = {
   oneapm_key: '',
 
   // 下面两个配置都是文件上传的配置
-
+/*
   // 7牛的access信息，用于文件上传
   qn_access: {
     accessKey: 'your access key',
@@ -106,7 +104,7 @@ var config = {
     // 如果在国内，此项请留空
     uploadURL: 'http://xxxxxxxx',
   },
-
+*/
   // 文件上传配置
   // 注：如果填写 qn_access，则会上传到 7牛，以下配置无效
   upload: {
