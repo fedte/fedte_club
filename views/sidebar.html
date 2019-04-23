@@ -1,3 +1,11 @@
+<!--
+ * @Descripttion: 
+ * @version: 
+ * @Author: falost
+ * @LastEditors: falost
+ * @Date: 2017-08-25 14:23:36
+ * @LastEditTime: 2019-04-23 16:50:13
+ -->
 <div id='sidebar'>
 
   <div class='panel' id="sidebarUser">
@@ -83,14 +91,24 @@
     </div>
     <div class='inner'>
       <ol class="friendship-community">
-       	<!--
-	 <li>
+       	<li>
           <a href="" target="_blank"></a>
-        </li>-->
-	<li>
-          <a href="http://phpstorm-china.org" target="_blank">PhpStorm中文社区</a>
         </li>
-
+        <%
+        var links = links || [];
+        for (var i = 0, l = links.length; i < l; i++) {
+        var link = links[i];
+        %>
+        <li>
+          <% if (link.logo !== '') { %>
+            <a href="<%- link.url %>" target="<%- link.target ? link.target : '_blank' %>" title="<%- link.name %>">
+              <img src="<%- link.logo %>" alt="<%- link.name %>">
+            </a>
+          <% } else { %>
+            <a href="<%- link.url %>" target="<%- link.target ? link.target : '_blank' %>" title="<%- link.name %>"><%- link.name %></a>
+          <% } %>
+        </li>
+        <% } %>
         <div class="sep10"></div>
 
       </ol>

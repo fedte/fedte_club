@@ -1,3 +1,11 @@
+/*
+ * @Descripttion: 
+ * @version: 
+ * @Author: falost
+ * @LastEditors: falost
+ * @Date: 2017-05-20 12:00:47
+ * @LastEditTime: 2019-04-23 16:41:55
+ */
 /*!
  * nodeclub - site index controller.
  * Copyright(c) 2012 fengmk2 <fengmk2@gmail.com>
@@ -106,6 +114,7 @@ exports.index = function (req, res, next) {
         tabs: config.tabs,
         tab: tab,
         pageTitle: tabName && (tabName + '版块'),
+        links: config.links
       });
     });
 };
